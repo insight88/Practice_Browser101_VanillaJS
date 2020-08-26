@@ -1,0 +1,23 @@
+body {
+    background-color: black;
+    /* overflow: hidden */
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 10px;
+    right: 10px
+}
+
+main>div {
+    width: 250px;
+    height: 250px;
+    background-color: peachpuff;
+    margin-top: 5px
+}
+
+div:nth-child(6) {
+    background-color: palevioletred;
+}
