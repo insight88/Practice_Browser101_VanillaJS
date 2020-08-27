@@ -1,0 +1,32 @@
+html,
+body {
+    background-color: black;
+    margin: 0;
+}
+
+.target {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.horizontal {
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    background-color: white;
+}
+
+.vertical {
+    height: 100%;
+    width: 1px;
+    position: absolute;
+    background-color: white;
+}
+
+.coords {
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    transform: translate(20px, 20px);
+    margin: 20px;
+}
