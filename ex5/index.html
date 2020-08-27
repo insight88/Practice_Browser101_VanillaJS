@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scroll</title>
+  <style>
+    body {
+      background-color: black;
+      text-align: center;
+    }
+
+    img {
+      display: block;
+      margin: auto
+    }
+
+    button {
+      display: inline;
+      width: 250px;
+      font-size: 30px;
+      background-color: tomato;
+      color: white;
+      margin: 20px
+    }
+  </style>
+</head>
+
+<body>
+  <button class="find">Find a Rabbit 🐇</button>
+  <img src="img/carrot.png" />
+  <img src="img/carrot.png" />
+  <img src="img/carrot.png" />
+  <img src="img/carrot.png" />
+  <img src="img/carrot.png" />
+  <img src="img/carrot.png" />
+  <img class="rabbit" src="img/rabbit.png" />
+  <img src="img/carrot.png" />
+  <img src="img/carrot.png" />
+  <img src="img/carrot.png" />
+  <img src="img/carrot.png" />
+  <script>
+    const rabbit = document.querySelector(".rabbit")
+    const button = document.querySelector("button")
+    button.addEventListener("click", (event) => {
+      const rabbitRect = rabbit.getBoundingClientRect();
+      rabbit.scrollIntoView({
+        behavior: 'smooth',
+        block: "center"
+      })
+    })
+    window.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
+    })
+  </script>
+</body>
+
+</html>
