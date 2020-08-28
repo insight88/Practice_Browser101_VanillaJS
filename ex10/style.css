@@ -95,6 +95,7 @@ header>div {
     background-size: cover;
     width: 70px;
     height: 70px;
+    border-radius: 40%;
     position: absolute;
     z-index: 3;
 }
@@ -106,6 +107,11 @@ header>div {
     height: 70px;
     position: absolute;
     z-index: 2;
+}
+
+.bugs:hover,
+.carrots:hover {
+    transform: scale(1.1)
 }
 
 .hidden {

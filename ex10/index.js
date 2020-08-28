@@ -77,6 +77,7 @@ function playGame() {
     playSound.play()
     changeBtn()
     hideMessageContainer()
+
     playground.innerHTML = ""
     for (let m = 0; m < carrotsLv; m++) {
         generateCarrots(i)
@@ -86,13 +87,13 @@ function playGame() {
         generateBugs(j)
         j++
     }
+
     displayCarrotNumber()
-    updateTime(10)
+    updateTime(presentTime)
     displayTime(givenTime)
 }
 
 function displayTime(givenTime) {
-    updateTime(givenTime)
     presentTime = setInterval(() => {
         if (givenTime <= 0) {
             clearInterval(presentTime);
@@ -121,8 +122,9 @@ function displayCarrotNumber() {
 
 function pullBug(event) {
     bugSound.play()
-    event.target.style.transform = "scale(1.4)"
+    event.target.style.transform = "scale(1.7)"
     result.innerHTML = "REPLAY 😥"
+    headButton.style.opacity = "0"
     gameEnd()
 }
 
@@ -135,6 +137,7 @@ function pullCarrot(event) {
 function pauseGame() {
     headButton.style.opacity = "0"
     result.innerHTML = "REPLAY 😥"
+    alertSound.play()
     gameEnd()
 }
 
@@ -148,7 +151,7 @@ function displayLevel() {
     level.innerHTML = `LEVEL ${carrotsLv - 9}`
 }
 
-function nextLevel(event) {
+function nextLevel() {
     carrotsLv++
     bugsLv++
     displayLevel()
@@ -156,12 +159,12 @@ function nextLevel(event) {
 }
 
 function hideMessageContainer() {
-    messageContainer.style.opacity = "0"
+    messageContainer.style.visibility = "collapse"
     messageContainer.style.zIndex = "0"
 }
 
 function displayMessageContainer() {
-    messageContainer.style.opacity = "1"
+    messageContainer.style.visibility = "visible"
     messageContainer.style.zIndex = "5"
 }
 
