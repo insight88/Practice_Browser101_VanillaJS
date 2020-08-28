@@ -151,6 +151,7 @@ function displayLevel() {
 function nextLevel(event) {
     carrotsLv++
     bugsLv++
+    displayLevel()
     playGame()
 }
 
