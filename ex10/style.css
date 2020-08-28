@@ -9,7 +9,7 @@ body {
 main {
     width: 100%;
     height: 100%;
-    background: center / contain no-repeat url("./img/background.png");
+    background: center / cover no-repeat url("./img/background.png");
     z-index: -1
 }
 
@@ -58,7 +58,7 @@ header>div {
     font-weight: 600;
 }
 
-.carrots {
+.carrot-number {
     width: 5vw;
     height: 5vw;
     background-color: #fab1a0;
@@ -72,14 +72,42 @@ header>div {
     align-items: center;
 }
 
+.playground {
+    width: 100vw;
+    height: 50vh;
+    position: absolute;
+    top: 25vh
+}
+
+.bugs {
+    background-image: url("./img/bug.png");
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: 3;
+}
+
+.carrots {
+    background-image: url("./img/carrot.png");
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: 2;
+}
+
 .hidden {
     display: none;
 }
 
 .container {
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    bottom: 20vh;
 }
 
 .message {
@@ -92,8 +120,6 @@ header>div {
     justify-content: center;
     align-items: center;
     padding: 5px;
-    position: relative;
-    bottom: -15vw
 }
 
 .replay i {
