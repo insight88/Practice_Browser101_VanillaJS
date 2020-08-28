@@ -1,15 +1,19 @@
-const button = document.querySelector("header .button")
-// const stop = document.querySelector(".stop")
-// const playIcon = play.querySelector("i")
-// const stopIcon = stop.querySelector("i")
+const headButton = document.querySelector("header .button")
+const buttonIcon = headButton.querySelector("i")
+const play = document.querySelector(".play")
+const playIcon = play.querySelector("i")
 const time = document.querySelector(".time")
 const carrotNumber = document.querySelector(".carrot-number")
+const level = document.querySelector(".this-level")
+
 const playground = document.querySelector(".playground")
 const bugs = document.querySelector(".bugs")
 const carrots = document.querySelector(".carrots")
+
 const messageContainer = document.querySelector(".container")
 const result = document.querySelector(".message__result")
-const replay = document.querySelector(".message__button")
+const replay = document.querySelector(".replay")
+const levelUp = document.querySelector(".level-up")
 
 const playSound = new Audio("./sound/bg.mp3");
 const bugSound = new Audio("./sound/bug_pull.mp3");
@@ -26,10 +30,9 @@ let i = 0
 let j = 0
 
 function changeBtn() {
-    if (button.classList.contains(play)) {
-        console.log(button.innerHTML)
-    } else if (button.classList.contains(stop)) {
-        console.log(button.innerHTML)
+    if (buttonIcon.classList.contains("fa-play")) {
+        buttonIcon.classList.remove("fa-play")
+        buttonIcon.classList.add("fa-stop")
     }
 }
 
@@ -66,9 +69,15 @@ function generateBugs(j) {
 }
 
 function playGame() {
+    headButton.style.opacity = "1"
+    play.removeEventListener("click", playGame)
+    headButton.addEventListener("click", pauseGame)
+
+    presentTime = 10
     playSound.play()
-    playground.innerHTML = ""
+    changeBtn()
     hideMessageContainer()
+    playground.innerHTML = ""
     for (let m = 0; m < carrotsLv; m++) {
         generateCarrots(i)
         i++
@@ -78,7 +87,8 @@ function playGame() {
         j++
     }
     displayCarrotNumber()
-    displayTime()
+    updateTime(10)
+    displayTime(givenTime)
 }
 
 function displayTime(givenTime) {
@@ -86,6 +96,8 @@ function displayTime(givenTime) {
     presentTime = setInterval(() => {
         if (givenTime <= 0) {
             clearInterval(presentTime);
+            result.innerHTML = "REPLAY 😥"
+            gameEnd()
             return
         }
         updateTime(--givenTime)
@@ -93,7 +105,7 @@ function displayTime(givenTime) {
 }
 
 function updateTime(sec) {
-    time.innerHTML = sec < 10 ? `00:0${givenTime}` : `00:${givenTime}`
+    time.innerHTML = sec < 10 ? `00:0${sec}` : `00:${sec}`
 }
 
 function displayCarrotNumber() {
@@ -120,9 +132,26 @@ function pullCarrot(event) {
     displayCarrotNumber()
 }
 
+function pauseGame() {
+    headButton.style.opacity = "0"
+    result.innerHTML = "REPLAY 😥"
+    gameEnd()
+}
+
 function gameEnd() {
     displayMessageContainer()
+    clearInterval(presentTime)
     playSound.pause()
+}
+
+function displayLevel() {
+    level.innerHTML = `LEVEL ${carrotsLv - 9}`
+}
+
+function nextLevel(event) {
+    carrotsLv++
+    bugsLv++
+    playGame()
 }
 
 function hideMessageContainer() {
@@ -137,9 +166,10 @@ function displayMessageContainer() {
 
 function init() {
     hideMessageContainer()
-    button.addEventListener("click", changeBtn)
-    button.addEventListener("click", playGame)
+    displayLevel()
+    headButton.addEventListener("click", playGame)
     replay.addEventListener("click", playGame)
+    levelUp.addEventListener("click", nextLevel)
     bugs.addEventListener("click", pullBug)
     carrots.addEventListener("click", pullCarrot)
 }

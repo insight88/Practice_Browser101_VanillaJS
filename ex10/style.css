@@ -72,6 +72,17 @@ header>div {
     align-items: center;
 }
 
+.this-level {
+    background-color: white;
+    font-size: 3vw;
+    font-weight: 700;
+    text-align: center;
+    border: 4px solid black;
+    position: relative;
+    border-radius: 2vh;
+    padding: 1vh;
+}
+
 .playground {
     width: 100vw;
     height: 50vh;
@@ -120,6 +131,18 @@ header>div {
     justify-content: center;
     align-items: center;
     padding: 5px;
+}
+
+.message__buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.level-up {
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 0.5vw;
+    text-align: center;
 }
 
 .replay i {
